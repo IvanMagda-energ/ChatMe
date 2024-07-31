@@ -7,18 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE53D8212C56DBC500ED49EF /* AuthUserNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53D8202C56DBC500ED49EF /* AuthUserNameView.swift */; };
+		CE53D8252C56DBF300ED49EF /* AuthPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53D8242C56DBF300ED49EF /* AuthPasswordView.swift */; };
+		CE53D8292C56F74800ED49EF /* GrowingButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53D8282C56F74800ED49EF /* GrowingButtonStyle.swift */; };
 		CE6E4B962C56A57200C83BB1 /* ChatMeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E4B952C56A57200C83BB1 /* ChatMeApp.swift */; };
 		CE6E4B982C56A57200C83BB1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E4B972C56A57200C83BB1 /* ContentView.swift */; };
 		CE6E4B9A2C56A57300C83BB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE6E4B992C56A57300C83BB1 /* Assets.xcassets */; };
 		CE6E4B9D2C56A57300C83BB1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE6E4B9C2C56A57300C83BB1 /* Preview Assets.xcassets */; };
+		CE6E4BA62C56AB5C00C83BB1 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E4BA52C56AB5C00C83BB1 /* AuthView.swift */; };
+		CE6E4BA82C56AB8500C83BB1 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E4BA72C56AB8500C83BB1 /* BackgroundView.swift */; };
+		CE6E4BAA2C56B45E00C83BB1 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E4BA92C56B45E00C83BB1 /* AuthViewModel.swift */; };
+		CE6E4BAC2C56BCD900C83BB1 /* AuthTextFieldViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E4BAB2C56BCD900C83BB1 /* AuthTextFieldViewModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE53D8202C56DBC500ED49EF /* AuthUserNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUserNameView.swift; sourceTree = "<group>"; };
+		CE53D8242C56DBF300ED49EF /* AuthPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPasswordView.swift; sourceTree = "<group>"; };
+		CE53D8282C56F74800ED49EF /* GrowingButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowingButtonStyle.swift; sourceTree = "<group>"; };
 		CE6E4B922C56A57200C83BB1 /* ChatMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE6E4B952C56A57200C83BB1 /* ChatMeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMeApp.swift; sourceTree = "<group>"; };
 		CE6E4B972C56A57200C83BB1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CE6E4B992C56A57300C83BB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE6E4B9C2C56A57300C83BB1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CE6E4BA52C56AB5C00C83BB1 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		CE6E4BA72C56AB8500C83BB1 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		CE6E4BA92C56B45E00C83BB1 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		CE6E4BAB2C56BCD900C83BB1 /* AuthTextFieldViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextFieldViewModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +46,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE53D81F2C56DB8F00ED49EF /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				CE53D8202C56DBC500ED49EF /* AuthUserNameView.swift */,
+				CE53D8242C56DBF300ED49EF /* AuthPasswordView.swift */,
+				CE6E4BAB2C56BCD900C83BB1 /* AuthTextFieldViewModifier.swift */,
+				CE53D8282C56F74800ED49EF /* GrowingButtonStyle.swift */,
+			);
+			path = Elements;
+			sourceTree = "<group>";
+		};
 		CE6E4B892C56A57200C83BB1 = {
 			isa = PBXGroup;
 			children = (
@@ -51,6 +76,7 @@
 		CE6E4B942C56A57200C83BB1 /* ChatMe */ = {
 			isa = PBXGroup;
 			children = (
+				CE6E4BA32C56AB0700C83BB1 /* Views */,
 				CE6E4B952C56A57200C83BB1 /* ChatMeApp.swift */,
 				CE6E4B972C56A57200C83BB1 /* ContentView.swift */,
 				CE6E4B992C56A57300C83BB1 /* Assets.xcassets */,
@@ -65,6 +91,25 @@
 				CE6E4B9C2C56A57300C83BB1 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CE6E4BA32C56AB0700C83BB1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE6E4BA42C56AB1C00C83BB1 /* AuthView */,
+				CE6E4BA72C56AB8500C83BB1 /* BackgroundView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CE6E4BA42C56AB1C00C83BB1 /* AuthView */ = {
+			isa = PBXGroup;
+			children = (
+				CE6E4BA52C56AB5C00C83BB1 /* AuthView.swift */,
+				CE6E4BA92C56B45E00C83BB1 /* AuthViewModel.swift */,
+				CE53D81F2C56DB8F00ED49EF /* Elements */,
+			);
+			path = AuthView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +182,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE6E4BAA2C56B45E00C83BB1 /* AuthViewModel.swift in Sources */,
+				CE6E4BAC2C56BCD900C83BB1 /* AuthTextFieldViewModifier.swift in Sources */,
 				CE6E4B982C56A57200C83BB1 /* ContentView.swift in Sources */,
+				CE53D8252C56DBF300ED49EF /* AuthPasswordView.swift in Sources */,
 				CE6E4B962C56A57200C83BB1 /* ChatMeApp.swift in Sources */,
+				CE53D8292C56F74800ED49EF /* GrowingButtonStyle.swift in Sources */,
+				CE6E4BA82C56AB8500C83BB1 /* BackgroundView.swift in Sources */,
+				CE6E4BA62C56AB5C00C83BB1 /* AuthView.swift in Sources */,
+				CE53D8212C56DBC500ED49EF /* AuthUserNameView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
