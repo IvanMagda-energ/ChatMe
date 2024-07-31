@@ -9,8 +9,11 @@ import Foundation
 import SwiftUI
 
 struct AuthView: View {
-    @State var authViewModel = AuthViewModel()
+    @State private var authViewModel = AuthViewModel()
     @State private var isNewAccount = false
+    @State private var firstPassword = ""
+    @State private var secondPassword = ""
+    @State private var isPasswordsTheSame = true
     
     var body: some View {
         GeometryReader { geometry in
@@ -30,18 +33,30 @@ struct AuthView: View {
                     AuthUserNameView(text: $authViewModel.userName)
                         .padding(.bottom)
                     
-                    AuthPasswordView(text: $authViewModel.password, passwordFieldType: .password)
+                    AuthPasswordView(text: $firstPassword, placeholder: "Password")
                         .padding(.bottom)
                     
                     if isNewAccount {
-                        AuthPasswordView(text: $authViewModel.repeatedPassword, passwordFieldType: .repeatPassword)
-                            .padding(.bottom)
+                        AuthPasswordView(text: $secondPassword, placeholder: "Repeat password")
+                            .padding(.bottom, 4)
                             .transition(.move(edge: .trailing))
+                        
+                        if !isPasswordsTheSame {
+                            Text("*Passwords not match")
+                                .foregroundStyle(.red)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
                     }
                     
                     Button {
                         if isNewAccount {
-                            authViewModel.createAccount()
+                            if authViewModel.arePasswordsEqual(firstPassword, secondPassword) {
+                                isPasswordsTheSame = true
+                                authViewModel.createAccount()
+                            } else {
+                                isPasswordsTheSame = false
+                            }
+                            
                         } else {
                             authViewModel.login()
                         }

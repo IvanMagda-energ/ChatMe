@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AuthPasswordView: View {
     @Binding var text: String
-    var passwordFieldType: PasswordFieldType
+    var placeholder: String
     @FocusState var isFocused: FieldToFocus?
     @State private var isPasswordShown = false
     
@@ -18,17 +18,16 @@ struct AuthPasswordView: View {
             Image(systemName: "lock")
                 .font(.system(size: 22, weight: .heavy))
                 .foregroundStyle(isFocused != nil ? .blue : .white)
-            
             Group {
                 if isPasswordShown {
                     TextField(
-                        passwordFieldType == .password ? "Password" : "Repeat password",
+                        placeholder,
                         text: $text
                     )
                         .focused($isFocused, equals: .textField)
                 } else {
                     SecureField(
-                        passwordFieldType == .password ? "Password" : "Repeat password",
+                        placeholder,
                         text: $text
                     )
                         .focused($isFocused, equals: .secureField)
@@ -58,14 +57,9 @@ struct AuthPasswordView: View {
 }
 
 #Preview {
-    AuthPasswordView(text: .constant(""), passwordFieldType: .password)
+    AuthPasswordView(text: .constant(""), placeholder: "Password")
 }
 
 enum FieldToFocus {
         case secureField, textField
     }
-
-enum PasswordFieldType {
-    case password
-    case repeatPassword
-}

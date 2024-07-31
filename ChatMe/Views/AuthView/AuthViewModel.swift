@@ -12,21 +12,17 @@ import SwiftUI
 final class AuthViewModel {
     var userName: String = ""
     var password: String = ""
-    var repeatedPassword: String = ""
+    
     
     func login() {
         print("Login")
     }
     
     func createAccount() {
-        guard arePasswordsEqual() else {
-            print("Passwords is not equal")
-            return
-        }
         print("Create account")
     }
     
-    func arePasswordsEqual() -> Bool {
-        return password == repeatedPassword
+    func arePasswordsEqual(_ firstPassword: String, _ secondPassword: String) -> Bool {
+        return firstPassword == secondPassword
     }
 }
