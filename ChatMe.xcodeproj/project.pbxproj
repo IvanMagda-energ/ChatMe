@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		CE253ABF2C5AD3E20091A788 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CE253ABE2C5AD3E20091A788 /* FirebaseAuth */; };
 		CE253AC12C5AD3E20091A788 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = CE253AC02C5AD3E20091A788 /* FirebaseStorage */; };
+		CE253AC42C5AD4DF0091A788 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE253AC32C5AD4DF0091A788 /* AuthManager.swift */; };
+		CE253AC62C5AD8910091A788 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE253AC52C5AD8910091A788 /* GoogleService-Info.plist */; };
 		CE53D8212C56DBC500ED49EF /* AuthUserNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53D8202C56DBC500ED49EF /* AuthUserNameView.swift */; };
 		CE53D8252C56DBF300ED49EF /* AuthPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53D8242C56DBF300ED49EF /* AuthPasswordView.swift */; };
 		CE53D8292C56F74800ED49EF /* GrowingButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53D8282C56F74800ED49EF /* GrowingButtonStyle.swift */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE253AC32C5AD4DF0091A788 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		CE253AC52C5AD8910091A788 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CE53D8202C56DBC500ED49EF /* AuthUserNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUserNameView.swift; sourceTree = "<group>"; };
 		CE53D8242C56DBF300ED49EF /* AuthPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPasswordView.swift; sourceTree = "<group>"; };
 		CE53D8282C56F74800ED49EF /* GrowingButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowingButtonStyle.swift; sourceTree = "<group>"; };
@@ -50,6 +54,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE253AC22C5AD4AE0091A788 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				CE253AC32C5AD4DF0091A788 /* AuthManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		CE53D81F2C56DB8F00ED49EF /* Elements */ = {
 			isa = PBXGroup;
 			children = (
@@ -80,10 +92,12 @@
 		CE6E4B942C56A57200C83BB1 /* ChatMe */ = {
 			isa = PBXGroup;
 			children = (
+				CE253AC22C5AD4AE0091A788 /* Managers */,
 				CE6E4BA32C56AB0700C83BB1 /* Views */,
 				CE6E4B952C56A57200C83BB1 /* ChatMeApp.swift */,
 				CE6E4B972C56A57200C83BB1 /* ContentView.swift */,
 				CE6E4B992C56A57300C83BB1 /* Assets.xcassets */,
+				CE253AC52C5AD8910091A788 /* GoogleService-Info.plist */,
 				CE6E4B9B2C56A57300C83BB1 /* Preview Content */,
 			);
 			path = ChatMe;
@@ -183,6 +197,7 @@
 			files = (
 				CE6E4B9D2C56A57300C83BB1 /* Preview Assets.xcassets in Resources */,
 				CE6E4B9A2C56A57300C83BB1 /* Assets.xcassets in Resources */,
+				CE253AC62C5AD8910091A788 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,6 +217,7 @@
 				CE6E4BA82C56AB8500C83BB1 /* BackgroundView.swift in Sources */,
 				CE6E4BA62C56AB5C00C83BB1 /* AuthView.swift in Sources */,
 				CE53D8212C56DBC500ED49EF /* AuthUserNameView.swift in Sources */,
+				CE253AC42C5AD4DF0091A788 /* AuthManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,7 +364,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ivanmagda.ChatMe;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ivanmagda.ChatMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -377,7 +393,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ivanmagda.ChatMe;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ivanmagda.ChatMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

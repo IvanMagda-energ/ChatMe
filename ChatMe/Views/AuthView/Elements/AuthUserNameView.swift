@@ -10,6 +10,14 @@ import SwiftUI
 struct AuthUserNameView: View {
     @Binding var text: String
     @FocusState var isFocused
+    @Binding var isEmailValid: Bool
+    private var foregroundColor: Color {
+        if isFocused {
+            return isEmailValid ? .blue : .red
+        } else {
+            return isEmailValid ? . white : .red
+        }
+    }
     
     var body: some View {
         HStack {
@@ -24,12 +32,12 @@ struct AuthUserNameView: View {
         .modifier(
             AuthTextFieldViewModifier(
                 backgroundColor: isFocused ? .white : .clear,
-                foregroundColor: isFocused ? .blue : .white
+                foregroundColor: foregroundColor
             )
         )
     }
 }
 
 #Preview {
-    AuthUserNameView(text: .constant(""))
+    AuthUserNameView(text: .constant(""), isEmailValid: .constant(false))
 }

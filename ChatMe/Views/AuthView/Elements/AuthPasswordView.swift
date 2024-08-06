@@ -12,6 +12,15 @@ struct AuthPasswordView: View {
     var placeholder: String
     @FocusState var isFocused: FieldToFocus?
     @State private var isPasswordShown = false
+    @Binding var isPasswordValid: Bool
+    
+    private var foregroundColor: Color {
+        if isFocused != nil {
+            return isPasswordValid ? .blue : .red
+        } else {
+            return isPasswordValid ? . white : .red
+        }
+    }
     
     var body: some View {
         HStack {
@@ -47,7 +56,7 @@ struct AuthPasswordView: View {
         .modifier(
             AuthTextFieldViewModifier(
                 backgroundColor: isFocused != nil ? .white : .clear,
-                foregroundColor: isFocused != nil ? .blue : .white
+                foregroundColor: foregroundColor
             )
         )
         .onChange(of: isPasswordShown) {
@@ -57,7 +66,7 @@ struct AuthPasswordView: View {
 }
 
 #Preview {
-    AuthPasswordView(text: .constant(""), placeholder: "Password")
+    AuthPasswordView(text: .constant(""), placeholder: "Password", isPasswordValid: .constant(false))
 }
 
 enum FieldToFocus {

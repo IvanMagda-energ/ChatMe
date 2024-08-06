@@ -10,10 +10,13 @@ import SwiftUI
 
 struct AuthView: View {
     @State private var authViewModel = AuthViewModel()
-    @State private var isNewAccount = false
-    @State private var firstPassword = ""
-    @State private var secondPassword = ""
-    @State private var isPasswordsTheSame = true
+    @State private var authType: AuthType = .signIn
+    @State private var arePasswordsEqual = true
+    @State private var isEmailValid = false
+    @State private var isPasswordValid = false
+    private var isAuthDataValid: Bool {
+        arePasswordsEqual && isEmailValid && isPasswordValid
+    }
     
     var body: some View {
         GeometryReader { geometry in
@@ -26,56 +29,81 @@ struct AuthView: View {
                         .padding(.bottom, 20)
                         .foregroundStyle(Color.white)
                     
-                    Text(isNewAccount ? "CREATE ACCOUNT" : "LOGIN")
+                    Text(authType == .createAccount ? "CREATE ACCOUNT" : "LOGIN")
                         .font(.system(size: 22, weight: .heavy))
                         .foregroundStyle(.white)
                     
-                    AuthUserNameView(text: $authViewModel.userName)
+                    AuthUserNameView(text: $authViewModel.email, isEmailValid: $isEmailValid)
                         .padding(.bottom)
+                        .onChange(of: authViewModel.email) {
+                            isEmailValid = authViewModel.isEmailValid()
+                        }
                     
-                    AuthPasswordView(text: $firstPassword, placeholder: "Password")
+                    AuthPasswordView(
+                        text: $authViewModel.password,
+                        placeholder: "Password",
+                        isPasswordValid: $isPasswordValid
+                    )
                         .padding(.bottom)
+                        .onChange(of: authViewModel.password) {
+                            isPasswordValid = authViewModel.isPasswordValid()
+                        }
                     
-                    if isNewAccount {
-                        AuthPasswordView(text: $secondPassword, placeholder: "Repeat password")
+                    if authType == .createAccount {
+                        AuthPasswordView(
+                            text: $authViewModel.repeatedPassword,
+                            placeholder: "Repeat password",
+                            isPasswordValid: $arePasswordsEqual
+                        )
                             .padding(.bottom, 4)
                             .transition(.move(edge: .trailing))
+                            .onChange(of: authViewModel.repeatedPassword) {
+                                withAnimation {
+                                    arePasswordsEqual = authViewModel.arePasswordsEqual()
+                                }
+                            }
                         
-                        if !isPasswordsTheSame {
+                        if !arePasswordsEqual {
                             Text("*Passwords not match")
                                 .foregroundStyle(.red)
                                 .frame(maxWidth: .infinity, alignment: .leading)
+                                .transition(.move(edge: .trailing))
                         }
                     }
                     
                     Button {
-                        if isNewAccount {
-                            if authViewModel.arePasswordsEqual(firstPassword, secondPassword) {
-                                isPasswordsTheSame = true
-                                authViewModel.createAccount()
-                            } else {
-                                isPasswordsTheSame = false
+                        switch authType {
+                        case .signIn:
+                            Task {
+                                await authViewModel.signIn()                            }
+                        case .createAccount:
+                            Task {
+                                await authViewModel.createAccount()
                             }
-                            
-                        } else {
-                            authViewModel.login()
                         }
                     } label: {
-                        Text(isNewAccount ? "Create" : "Login")
+                        Text(authType == .createAccount ? "Create" : "Login")
                             .font(.system(size: 20, weight: .bold))
                             .padding(.vertical)
                             .padding(.horizontal, 60)
                     }
-                    .buttonStyle(GrowingButtonStyle(backgroundColor: Color(red: 0, green: 0, blue: 0.5)))
+                    .buttonStyle(GrowingButtonStyle(backgroundColor: isAuthDataValid ? .blue : .gray))
                     .padding(.bottom)
-                    
-                    Text("Not a member?")
-                        .foregroundStyle(.white)
-                        .padding(.bottom)
+                    .disabled(!isAuthDataValid)
                     
                     Button {
                         withAnimation {
-                            isNewAccount.toggle()
+                            switch authType {
+                            case .signIn:
+                                authType = .createAccount
+                                authViewModel.email = ""
+                                authViewModel.password = ""
+                            case .createAccount:
+                                authType = .signIn
+                                authViewModel.email = ""
+                                authViewModel.password = ""
+                                authViewModel.repeatedPassword = ""
+                            }
                         }
                     } label: {
                         Text("Create account")
@@ -99,4 +127,9 @@ struct AuthView: View {
 
 #Preview {
     AuthView()
+}
+
+enum AuthType {
+    case signIn
+    case createAccount
 }
