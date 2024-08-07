@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AuthUserNameView: View {
     @Binding var text: String
+    let placeholder: String
     @FocusState var isFocused
     @Binding var isEmailValid: Bool
     private var foregroundColor: Color {
@@ -25,7 +26,7 @@ struct AuthUserNameView: View {
                 .font(.system(size: 22, weight: .heavy))
                 .foregroundStyle(isFocused ? .blue : .white)
             
-            TextField("User name", text: $text)
+            TextField(placeholder, text: $text)
                 .focused($isFocused)
                 .font(.system(size: 20, weight: .bold))
         }
@@ -39,5 +40,9 @@ struct AuthUserNameView: View {
 }
 
 #Preview {
-    AuthUserNameView(text: .constant(""), isEmailValid: .constant(false))
+    AuthUserNameView(
+        text: .constant(""),
+        placeholder: "User name",
+        isEmailValid: .constant(false)
+    )
 }

@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct AuthView: View {
-    @State private var authViewModel = AuthViewModel()
+    @State private var viewModel = AuthViewModel()
     @State private var authType: AuthType = .signIn
     @State private var arePasswordsEqual = true
     @State private var isEmailValid = false
@@ -29,42 +29,46 @@ struct AuthView: View {
                         .padding(.bottom, 20)
                         .foregroundStyle(Color.white)
                     
-                    Text(authType == .createAccount ? "CREATE ACCOUNT" : "LOGIN")
+                    Text(authType == .createAccount ? LocalizedStrings.createHeader : LocalizedStrings.signInHeader)
                         .font(.system(size: 22, weight: .heavy))
                         .foregroundStyle(.white)
                     
-                    AuthUserNameView(text: $authViewModel.email, isEmailValid: $isEmailValid)
+                    AuthUserNameView(
+                        text: $viewModel.email,
+                        placeholder: LocalizedStrings.userNamePlaceholder,
+                        isEmailValid: $isEmailValid
+                    )
                         .padding(.bottom)
-                        .onChange(of: authViewModel.email) {
-                            isEmailValid = authViewModel.isEmailValid()
+                        .onChange(of: viewModel.email) {
+                            isEmailValid = viewModel.isEmailValid()
                         }
                     
                     AuthPasswordView(
-                        text: $authViewModel.password,
-                        placeholder: "Password",
+                        text: $viewModel.password,
+                        placeholder: LocalizedStrings.passwordPlaceholder,
                         isPasswordValid: $isPasswordValid
                     )
                         .padding(.bottom)
-                        .onChange(of: authViewModel.password) {
-                            isPasswordValid = authViewModel.isPasswordValid()
+                        .onChange(of: viewModel.password) {
+                            isPasswordValid = viewModel.isPasswordValid()
                         }
                     
                     if authType == .createAccount {
                         AuthPasswordView(
-                            text: $authViewModel.repeatedPassword,
-                            placeholder: "Repeat password",
+                            text: $viewModel.repeatedPassword,
+                            placeholder: LocalizedStrings.repeatPasswordPlaceholder,
                             isPasswordValid: $arePasswordsEqual
                         )
                             .padding(.bottom, 4)
                             .transition(.move(edge: .trailing))
-                            .onChange(of: authViewModel.repeatedPassword) {
+                            .onChange(of: viewModel.repeatedPassword) {
                                 withAnimation {
-                                    arePasswordsEqual = authViewModel.arePasswordsEqual()
+                                    arePasswordsEqual = viewModel.arePasswordsEqual()
                                 }
                             }
                         
                         if !arePasswordsEqual {
-                            Text("*Passwords not match")
+                            Text(LocalizedStrings.passwordNotMatch)
                                 .foregroundStyle(.red)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .transition(.move(edge: .trailing))
@@ -75,14 +79,15 @@ struct AuthView: View {
                         switch authType {
                         case .signIn:
                             Task {
-                                await authViewModel.signIn()                            }
+                                await viewModel.signIn()
+                            }
                         case .createAccount:
                             Task {
-                                await authViewModel.createAccount()
+                                await viewModel.createAccount()
                             }
                         }
                     } label: {
-                        Text(authType == .createAccount ? "Create" : "Login")
+                        Text(authType == .createAccount ? LocalizedStrings.createButton : LocalizedStrings.loginButton)
                             .font(.system(size: 20, weight: .bold))
                             .padding(.vertical)
                             .padding(.horizontal, 60)
@@ -96,17 +101,17 @@ struct AuthView: View {
                             switch authType {
                             case .signIn:
                                 authType = .createAccount
-                                authViewModel.email = ""
-                                authViewModel.password = ""
+                                viewModel.email = ""
+                                viewModel.password = ""
                             case .createAccount:
                                 authType = .signIn
-                                authViewModel.email = ""
-                                authViewModel.password = ""
-                                authViewModel.repeatedPassword = ""
+                                viewModel.email = ""
+                                viewModel.password = ""
+                                viewModel.repeatedPassword = ""
                             }
                         }
                     } label: {
-                        Text("Create account")
+                        Text(LocalizedStrings.createAccount)
                             .padding(.horizontal)
                             .padding(.vertical, 4)
                     }
@@ -121,6 +126,21 @@ struct AuthView: View {
             .background {
                 BackgroundView()
             }
+            .alert(isPresented: $viewModel.hasError, error: viewModel.error) { error in
+                if let recoverySuggestion = error.recoverySuggestion {
+                    Button(recoverySuggestion, role: .cancel) {
+                        viewModel.error = nil
+                    }
+                } else {
+                    Text(LocalizedStrings.okButton)
+                }
+            } message: { error in
+                if let failureReason = error.failureReason {
+                    Text(failureReason)
+                } else {
+                    Text(LocalizedStrings.unknownError)
+                }
+            }
         }
     }
 }
@@ -129,7 +149,58 @@ struct AuthView: View {
     AuthView()
 }
 
-enum AuthType {
-    case signIn
-    case createAccount
+extension AuthView {
+    private enum LocalizedStrings {
+        static let createHeader = NSLocalizedString(
+            "auth.view.create.header",
+            comment: "Header for auth view"
+        )
+        static let signInHeader = NSLocalizedString(
+            "auth.view.sign.in.header",
+            comment: "Header for auth view"
+        )
+        static let userNamePlaceholder = NSLocalizedString(
+            "auth.view.user.name.placeholder",
+            comment: "Placeholder for user name text field"
+        )
+        static let passwordPlaceholder = NSLocalizedString(
+            "auth.view.password.placeholder",
+            comment: "Placeholder for password text field"
+        )
+        static let repeatPasswordPlaceholder = NSLocalizedString(
+            "auth.view.repeat.password.placeholder",
+            comment: "Placeholder for repeat password text field"
+        )
+        static let passwordNotMatch = NSLocalizedString(
+            "auth.view.password.not.match.text",
+            comment: "Text for error if passwords not match"
+        )
+        static let createButton = NSLocalizedString(
+            "auth.view.create.button",
+            comment: "Title for auth view create button"
+        )
+        static let loginButton = NSLocalizedString(
+            "auth.view.login.button",
+            comment: "Title for auth view login button"
+        )
+        static let createAccount = NSLocalizedString(
+            "auth.view.create.account.button",
+            comment: "Title for auth view create account button"
+        )
+        static let okButton = NSLocalizedString(
+            "ok.button",
+            comment: "Title for auth view ok button"
+        )
+        static let unknownError = NSLocalizedString(
+            "unknown.error",
+            comment: "Title for alert when unknown error"
+        )
+    }
+    
+    private enum AuthType {
+        case signIn
+        case createAccount
+    }
 }
+
+

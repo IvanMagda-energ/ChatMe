@@ -12,7 +12,7 @@ import os
 
 final class AuthManager: AuthManageable {
     private let logger = Logger(
-        subsystem: Bundle.main.bundleIdentifier ?? "ChatMe",
+        subsystem: String(describing: Bundle.main.bundleIdentifier),
         category: String(describing: AuthManager.self)
     )
     

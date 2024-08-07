@@ -11,6 +11,8 @@
 		CE253AC12C5AD3E20091A788 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = CE253AC02C5AD3E20091A788 /* FirebaseStorage */; };
 		CE253AC42C5AD4DF0091A788 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE253AC32C5AD4DF0091A788 /* AuthManager.swift */; };
 		CE253AC62C5AD8910091A788 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE253AC52C5AD8910091A788 /* GoogleService-Info.plist */; };
+		CE253AEF2C640BC60091A788 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE253AEE2C640BC60091A788 /* Constants.swift */; };
+		CE253AF12C641B380091A788 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CE253AF02C641B380091A788 /* Localizable.xcstrings */; };
 		CE53D8212C56DBC500ED49EF /* AuthUserNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53D8202C56DBC500ED49EF /* AuthUserNameView.swift */; };
 		CE53D8252C56DBF300ED49EF /* AuthPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53D8242C56DBF300ED49EF /* AuthPasswordView.swift */; };
 		CE53D8292C56F74800ED49EF /* GrowingButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53D8282C56F74800ED49EF /* GrowingButtonStyle.swift */; };
@@ -27,6 +29,8 @@
 /* Begin PBXFileReference section */
 		CE253AC32C5AD4DF0091A788 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		CE253AC52C5AD8910091A788 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CE253AEE2C640BC60091A788 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CE253AF02C641B380091A788 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		CE53D8202C56DBC500ED49EF /* AuthUserNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUserNameView.swift; sourceTree = "<group>"; };
 		CE53D8242C56DBF300ED49EF /* AuthPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPasswordView.swift; sourceTree = "<group>"; };
 		CE53D8282C56F74800ED49EF /* GrowingButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowingButtonStyle.swift; sourceTree = "<group>"; };
@@ -62,6 +66,14 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		CE253AED2C640BAD0091A788 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CE253AEE2C640BC60091A788 /* Constants.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		CE53D81F2C56DB8F00ED49EF /* Elements */ = {
 			isa = PBXGroup;
 			children = (
@@ -92,11 +104,13 @@
 		CE6E4B942C56A57200C83BB1 /* ChatMe */ = {
 			isa = PBXGroup;
 			children = (
+				CE253AED2C640BAD0091A788 /* Utils */,
 				CE253AC22C5AD4AE0091A788 /* Managers */,
 				CE6E4BA32C56AB0700C83BB1 /* Views */,
 				CE6E4B952C56A57200C83BB1 /* ChatMeApp.swift */,
 				CE6E4B972C56A57200C83BB1 /* ContentView.swift */,
 				CE6E4B992C56A57300C83BB1 /* Assets.xcassets */,
+				CE253AF02C641B380091A788 /* Localizable.xcstrings */,
 				CE253AC52C5AD8910091A788 /* GoogleService-Info.plist */,
 				CE6E4B9B2C56A57300C83BB1 /* Preview Content */,
 			);
@@ -176,6 +190,7 @@
 			knownRegions = (
 				en,
 				Base,
+				uk,
 			);
 			mainGroup = CE6E4B892C56A57200C83BB1;
 			packageReferences = (
@@ -197,6 +212,7 @@
 			files = (
 				CE6E4B9D2C56A57300C83BB1 /* Preview Assets.xcassets in Resources */,
 				CE6E4B9A2C56A57300C83BB1 /* Assets.xcassets in Resources */,
+				CE253AF12C641B380091A788 /* Localizable.xcstrings in Resources */,
 				CE253AC62C5AD8910091A788 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -209,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE6E4BAA2C56B45E00C83BB1 /* AuthViewModel.swift in Sources */,
+				CE253AEF2C640BC60091A788 /* Constants.swift in Sources */,
 				CE6E4BAC2C56BCD900C83BB1 /* AuthTextFieldViewModifier.swift in Sources */,
 				CE6E4B982C56A57200C83BB1 /* ContentView.swift in Sources */,
 				CE53D8252C56DBF300ED49EF /* AuthPasswordView.swift in Sources */,
