@@ -154,6 +154,40 @@
         }
       }
     },
+    "camera.picker.button" : {
+      "comment" : "Title for camera picker button",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Camera"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Камера"
+          }
+        }
+      }
+    },
+    "change.avatar.menu.title" : {
+      "comment" : "The title of the window for changing the avatar",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chose the source"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Виберіть джерело"
+          }
+        }
+      }
+    },
     "failed.create.account.error.description" : {
       "comment" : "Error description when failed create user",
       "extractionState" : "extracted_with_value",
@@ -204,6 +238,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Не вдалось створити користувача"
+          }
+        }
+      }
+    },
+    "gallery.picker.button" : {
+      "comment" : "Title for gallery picker button",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Galery"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Галерея"
           }
         }
       }

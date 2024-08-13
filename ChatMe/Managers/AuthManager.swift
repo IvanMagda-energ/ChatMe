@@ -6,11 +6,10 @@
 //
 
 import SwiftUI
-import Firebase
 import FirebaseAuth
 import os
 
-final class AuthManager: AuthManageable {
+final class AuthManager: AuthManagerProtocol {
     private let logger = Logger(
         subsystem: String(describing: Bundle.main.bundleIdentifier),
         category: String(describing: AuthManager.self)
@@ -21,8 +20,8 @@ final class AuthManager: AuthManageable {
     private let auth: Auth
     
     init() {
-        FirebaseApp.configure()
         self.auth = Auth.auth()
+        NSLog("<< initAuth")
     }
     
     func createAccount(email: String, password: String) async throws -> AuthDataResult {
@@ -41,10 +40,15 @@ final class AuthManager: AuthManageable {
         logger.info(#function)
         try auth.signOut()
     }
+    
+    func currentUserId() -> String? {
+        return auth.currentUser?.uid
+    }
 }
 
-protocol AuthManageable {
+protocol AuthManagerProtocol {
     func createAccount(email: String, password: String) async throws -> AuthDataResult
     func signIn(email: String, password: String) async throws -> AuthDataResult
     func signOut() throws
+    func currentUserId() -> String?
 }
