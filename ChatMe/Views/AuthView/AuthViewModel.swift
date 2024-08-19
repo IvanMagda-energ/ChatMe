@@ -19,19 +19,26 @@ final class AuthViewModel {
     var email = ""
     var password = ""
     var repeatedPassword = ""
+    var avatarImage: UIImage?
     var error: AuthViewModelError?
     var hasError = false
     
-    private let authManager: AuthManageable
+    private let authManager: AuthManagerProtocol
+    private let storeManager: StorageManagerProtocol
     
-    init(authManager: AuthManageable = AuthManager.shared) {
+    init(
+        authManager: AuthManagerProtocol = AuthManager.shared,
+        storeManager: StorageManagerProtocol = StorageManager.shared
+    ) {
         self.authManager = authManager
+        self.storeManager = storeManager
     }
     
     func signIn() async {
         do {
             let result = try await authManager.signIn(email: email, password: password)
             logger.info("\(#function) Success: \(result)")
+            saveUserAvatarToStore()
         } catch {
             await handleError(.failedSignIn(error))
         }
@@ -41,6 +48,7 @@ final class AuthViewModel {
         do {
             let result = try await authManager.createAccount(email: email, password: password)
             logger.info("\(#function) Success: \(result)")
+            saveUserAvatarToStore()
         } catch {
             await handleError(.failedCreateAccount(error))
         }
@@ -52,6 +60,24 @@ final class AuthViewModel {
         } catch {
             await handleError(.failedSignOut(error))
         }
+    }
+    
+    func saveUserAvatarToStore() {
+        guard let avatarImage else {
+            return
+        }
+        
+        guard  let compressedImageData = avatarImage.jpegData(compressionQuality: 0.5) else {
+            return
+        }
+        
+        guard let currentUserId = authManager.currentUserId() else {
+            return
+        }
+       
+        storeManager.storeImage(compressedImageData, userId: currentUserId)
+        logger.info("\(#function) Avatar image for user \(currentUserId) successful stored.")
+        
     }
     
     func arePasswordsEqual() -> Bool {

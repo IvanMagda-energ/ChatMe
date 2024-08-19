@@ -22,12 +22,25 @@ struct AuthView: View {
         GeometryReader { geometry in
             ScrollView {
                 VStack {
-                    Image(systemName: "person.circle")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: geometry.size.width / 3)
+                    ImagePickerView(image: $viewModel.avatarImage) {
+                        ZStack {
+                            if let image = viewModel.avatarImage {
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .clipShape(Circle())
+                            } else {
+                                Image(systemName: "person.circle")
+                                    .resizable()
+                                    .foregroundStyle(Color.white)
+                            }
+                        }
+                        .aspectRatio(contentMode: .fill)
+                        .frame(
+                            width: geometry.size.width / 3,
+                            height: geometry.size.width / 3
+                        )
                         .padding(.bottom, 20)
-                        .foregroundStyle(Color.white)
+                    }
                     
                     Text(authType == .createAccount ? LocalizedStrings.createHeader : LocalizedStrings.signInHeader)
                         .font(.system(size: 22, weight: .heavy))
@@ -197,7 +210,7 @@ extension AuthView {
         )
     }
     
-    private enum AuthType {
+    enum AuthType {
         case signIn
         case createAccount
     }

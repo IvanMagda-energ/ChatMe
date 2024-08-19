@@ -13,6 +13,8 @@
 		CE253AC62C5AD8910091A788 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE253AC52C5AD8910091A788 /* GoogleService-Info.plist */; };
 		CE253AEF2C640BC60091A788 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE253AEE2C640BC60091A788 /* Constants.swift */; };
 		CE253AF12C641B380091A788 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = CE253AF02C641B380091A788 /* Localizable.xcstrings */; };
+		CE253AFF2C668DC60091A788 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE253AFE2C668DC60091A788 /* ImagePickerView.swift */; };
+		CE253B042C6691DE0091A788 /* CameraPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE253B032C6691DE0091A788 /* CameraPickerView.swift */; };
 		CE53D8212C56DBC500ED49EF /* AuthUserNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53D8202C56DBC500ED49EF /* AuthUserNameView.swift */; };
 		CE53D8252C56DBF300ED49EF /* AuthPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53D8242C56DBF300ED49EF /* AuthPasswordView.swift */; };
 		CE53D8292C56F74800ED49EF /* GrowingButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53D8282C56F74800ED49EF /* GrowingButtonStyle.swift */; };
@@ -24,6 +26,8 @@
 		CE6E4BA82C56AB8500C83BB1 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E4BA72C56AB8500C83BB1 /* BackgroundView.swift */; };
 		CE6E4BAA2C56B45E00C83BB1 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E4BA92C56B45E00C83BB1 /* AuthViewModel.swift */; };
 		CE6E4BAC2C56BCD900C83BB1 /* AuthTextFieldViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E4BAB2C56BCD900C83BB1 /* AuthTextFieldViewModifier.swift */; };
+		CE7912D92C6BC1F400AE4BA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7912D82C6BC1F400AE4BA6 /* AppDelegate.swift */; };
+		CEB822822C66B3D2005D26C9 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB822812C66B3D2005D26C9 /* StorageManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +35,8 @@
 		CE253AC52C5AD8910091A788 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CE253AEE2C640BC60091A788 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CE253AF02C641B380091A788 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		CE253AFE2C668DC60091A788 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
+		CE253B032C6691DE0091A788 /* CameraPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPickerView.swift; sourceTree = "<group>"; };
 		CE53D8202C56DBC500ED49EF /* AuthUserNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUserNameView.swift; sourceTree = "<group>"; };
 		CE53D8242C56DBF300ED49EF /* AuthPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPasswordView.swift; sourceTree = "<group>"; };
 		CE53D8282C56F74800ED49EF /* GrowingButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowingButtonStyle.swift; sourceTree = "<group>"; };
@@ -43,6 +49,8 @@
 		CE6E4BA72C56AB8500C83BB1 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		CE6E4BA92C56B45E00C83BB1 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		CE6E4BAB2C56BCD900C83BB1 /* AuthTextFieldViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextFieldViewModifier.swift; sourceTree = "<group>"; };
+		CE7912D82C6BC1F400AE4BA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CEB822812C66B3D2005D26C9 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				CE253AC32C5AD4DF0091A788 /* AuthManager.swift */,
+				CEB822812C66B3D2005D26C9 /* StorageManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -72,6 +81,22 @@
 				CE253AEE2C640BC60091A788 /* Constants.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		CE253AFD2C668DA40091A788 /* ImagePickerView */ = {
+			isa = PBXGroup;
+			children = (
+				CE253AFE2C668DC60091A788 /* ImagePickerView.swift */,
+			);
+			path = ImagePickerView;
+			sourceTree = "<group>";
+		};
+		CE253B022C6691B90091A788 /* CameraPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				CE253B032C6691DE0091A788 /* CameraPickerView.swift */,
+			);
+			path = CameraPickerView;
 			sourceTree = "<group>";
 		};
 		CE53D81F2C56DB8F00ED49EF /* Elements */ = {
@@ -108,6 +133,7 @@
 				CE253AC22C5AD4AE0091A788 /* Managers */,
 				CE6E4BA32C56AB0700C83BB1 /* Views */,
 				CE6E4B952C56A57200C83BB1 /* ChatMeApp.swift */,
+				CE7912D82C6BC1F400AE4BA6 /* AppDelegate.swift */,
 				CE6E4B972C56A57200C83BB1 /* ContentView.swift */,
 				CE6E4B992C56A57300C83BB1 /* Assets.xcassets */,
 				CE253AF02C641B380091A788 /* Localizable.xcstrings */,
@@ -128,6 +154,8 @@
 		CE6E4BA32C56AB0700C83BB1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CE253B022C6691B90091A788 /* CameraPickerView */,
+				CE253AFD2C668DA40091A788 /* ImagePickerView */,
 				CE6E4BA42C56AB1C00C83BB1 /* AuthView */,
 				CE6E4BA72C56AB8500C83BB1 /* BackgroundView.swift */,
 			);
@@ -227,7 +255,10 @@
 				CE6E4BAA2C56B45E00C83BB1 /* AuthViewModel.swift in Sources */,
 				CE253AEF2C640BC60091A788 /* Constants.swift in Sources */,
 				CE6E4BAC2C56BCD900C83BB1 /* AuthTextFieldViewModifier.swift in Sources */,
+				CE7912D92C6BC1F400AE4BA6 /* AppDelegate.swift in Sources */,
+				CEB822822C66B3D2005D26C9 /* StorageManager.swift in Sources */,
 				CE6E4B982C56A57200C83BB1 /* ContentView.swift in Sources */,
+				CE253AFF2C668DC60091A788 /* ImagePickerView.swift in Sources */,
 				CE53D8252C56DBF300ED49EF /* AuthPasswordView.swift in Sources */,
 				CE6E4B962C56A57200C83BB1 /* ChatMeApp.swift in Sources */,
 				CE53D8292C56F74800ED49EF /* GrowingButtonStyle.swift in Sources */,
@@ -235,6 +266,7 @@
 				CE6E4BA62C56AB5C00C83BB1 /* AuthView.swift in Sources */,
 				CE53D8212C56DBC500ED49EF /* AuthUserNameView.swift in Sources */,
 				CE253AC42C5AD4DF0091A788 /* AuthManager.swift in Sources */,
+				CE253B042C6691DE0091A788 /* CameraPickerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
